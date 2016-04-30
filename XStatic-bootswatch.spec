@@ -4,7 +4,7 @@
 #
 Name     : XStatic-bootswatch
 Version  : 3.3.5.3
-Release  : 3
+Release  : 4
 URL      : https://pypi.python.org/packages/source/X/XStatic-bootswatch/XStatic-bootswatch-3.3.5.3.tar.gz
 Source0  : https://pypi.python.org/packages/source/X/XStatic-bootswatch/XStatic-bootswatch-3.3.5.3.tar.gz
 Summary  : bootswatch 3.3.5 (XStatic packaging standard)
