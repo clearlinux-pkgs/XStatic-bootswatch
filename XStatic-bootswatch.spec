@@ -4,7 +4,7 @@
 #
 Name     : XStatic-bootswatch
 Version  : 3.3.7.0
-Release  : 8
+Release  : 9
 URL      : http://pypi.debian.net/XStatic-bootswatch/XStatic-bootswatch-3.3.7.0.tar.gz
 Source0  : http://pypi.debian.net/XStatic-bootswatch/XStatic-bootswatch-3.3.7.0.tar.gz
 Summary  : bootswatch 3.3.7 (XStatic packaging standard)
