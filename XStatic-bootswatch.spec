@@ -4,39 +4,35 @@
 #
 Name     : XStatic-bootswatch
 Version  : 3.3.7.0
-Release  : 16
+Release  : 17
 URL      : http://pypi.debian.net/XStatic-bootswatch/XStatic-bootswatch-3.3.7.0.tar.gz
 Source0  : http://pypi.debian.net/XStatic-bootswatch/XStatic-bootswatch-3.3.7.0.tar.gz
 Summary  : bootswatch 3.3.7 (XStatic packaging standard)
 Group    : Development/Tools
 License  : MIT
-Requires: XStatic-bootswatch-python3
-Requires: XStatic-bootswatch-python
+Requires: XStatic-bootswatch-python = %{version}-%{release}
+Requires: XStatic-bootswatch-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
-BuildRequires : pbr
-BuildRequires : pip
-BuildRequires : python3-dev
-BuildRequires : setuptools
 
 %description
 XStatic-bootswatch
-        ------------------
-        
-        bootswatch javascript library packaged for setuptools (easy_install) / pip.
-        
-        This package is intended to be used by **any** project that needs these files.
-        
-        It intentionally does **not** provide any extra code except some metadata
-        **nor** has any extra requirements. You MAY use some minimal support code from
-        the XStatic base package, if you like.
-        
-        You can find more info about the xstatic packaging way in the package
-        `XStatic`.
+------------------
+
+bootswatch javascript library packaged for setuptools (easy_install) / pip.
+
+This package is intended to be used by **any** project that needs these files.
+
+It intentionally does **not** provide any extra code except some metadata
+**nor** has any extra requirements. You MAY use some minimal support code from
+the XStatic base package, if you like.
+
+You can find more info about the xstatic packaging way in the package
+`XStatic`.
 
 %package python
 Summary: python components for the XStatic-bootswatch package.
 Group: Default
-Requires: XStatic-bootswatch-python3
+Requires: XStatic-bootswatch-python3 = %{version}-%{release}
 Provides: xstatic-bootswatch-python
 
 %description python
@@ -47,6 +43,7 @@ python components for the XStatic-bootswatch package.
 Summary: python3 components for the XStatic-bootswatch package.
 Group: Default
 Requires: python3-core
+Provides: pypi(XStatic-bootswatch)
 
 %description python3
 python3 components for the XStatic-bootswatch package.
@@ -54,18 +51,27 @@ python3 components for the XStatic-bootswatch package.
 
 %prep
 %setup -q -n XStatic-bootswatch-3.3.7.0
+cd %{_builddir}/XStatic-bootswatch-3.3.7.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1532215604
-python3 setup.py build -b py3
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1582851909
+# -Werror is for werrorists
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
+export MAKEFLAGS=%{?_smp_mflags}
+python3 setup.py build
 
 %install
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
