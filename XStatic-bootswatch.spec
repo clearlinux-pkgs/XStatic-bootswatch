@@ -4,7 +4,7 @@
 #
 Name     : XStatic-bootswatch
 Version  : 3.3.7.0
-Release  : 17
+Release  : 18
 URL      : http://pypi.debian.net/XStatic-bootswatch/XStatic-bootswatch-3.3.7.0.tar.gz
 Source0  : http://pypi.debian.net/XStatic-bootswatch/XStatic-bootswatch-3.3.7.0.tar.gz
 Summary  : bootswatch 3.3.7 (XStatic packaging standard)
@@ -16,18 +16,18 @@ BuildRequires : buildreq-distutils3
 
 %description
 XStatic-bootswatch
-------------------
-
-bootswatch javascript library packaged for setuptools (easy_install) / pip.
-
-This package is intended to be used by **any** project that needs these files.
-
-It intentionally does **not** provide any extra code except some metadata
-**nor** has any extra requirements. You MAY use some minimal support code from
-the XStatic base package, if you like.
-
-You can find more info about the xstatic packaging way in the package
-`XStatic`.
+        ------------------
+        
+        bootswatch javascript library packaged for setuptools (easy_install) / pip.
+        
+        This package is intended to be used by **any** project that needs these files.
+        
+        It intentionally does **not** provide any extra code except some metadata
+        **nor** has any extra requirements. You MAY use some minimal support code from
+        the XStatic base package, if you like.
+        
+        You can find more info about the xstatic packaging way in the package
+        `XStatic`.
 
 %package python
 Summary: python components for the XStatic-bootswatch package.
@@ -43,7 +43,7 @@ python components for the XStatic-bootswatch package.
 Summary: python3 components for the XStatic-bootswatch package.
 Group: Default
 Requires: python3-core
-Provides: pypi(XStatic-bootswatch)
+Provides: pypi(xstatic_bootswatch)
 
 %description python3
 python3 components for the XStatic-bootswatch package.
@@ -58,8 +58,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1582851909
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1583525835
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
